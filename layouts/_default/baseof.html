@@ -14,6 +14,11 @@
         {{- partial "head/meta.html" . -}}
         {{- partial "head/link.html" . -}}
         {{- partial "head/seo.html" . -}}
+
+        {{ if and (hugo.IsProduction) (.Site.Params.googleAnalyticsMeasurementID) }}
+        {{- partial "analytics-gtag.html" . -}}
+        {{ end }}
+
     </head>
     <body header-desktop="{{ .Site.Params.header.desktopMode }}" header-mobile="{{ .Site.Params.header.mobileMode }}">
         {{- /* Check theme isDark before body rendering */ -}}
